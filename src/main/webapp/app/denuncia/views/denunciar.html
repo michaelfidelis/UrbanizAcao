@@ -1,0 +1,74 @@
+<section id="nova-denuncia">
+
+    <fieldset class="fieldset">
+        <legend>Cadastrar denúncia</legend>
+
+
+        <div class="row">
+            <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                <label for="delator">Nome</label>
+                <input class="form-control" type="text" name="denuncia.delator" placeholder="Ex.: Drielly Bezerra" ng-model="self.denuncia.delator">
+            </div>
+
+            <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                <label for="denuncia.tipo">Tipo de denúncia</label>
+                <select class="form-control" name="denuncia.tipo" ng-model="self.denuncia.tipo" ng-options="tipo.descricao for tipo in self.tiposDenuncia track by tipo.codigo" ng-init="self.obterTiposDenuncia()"></select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9 col-sm-9 col-xs-8">
+                <label for="localizacao.logradouro">Logradouro</label>
+                <input class="form-control" type="text" name="localizacao.logradouro" placeholder="Ex.: Avenida Marques de São Vicente" ng-model="self.denuncia.localizacao.logradouro">
+            </div>
+            <div class="form-group col-md-3 col-sm-3 col-xs-4">
+                <label for="localizacao.numero">Número</label>
+                <input class="form-control" type="number" name="localizacao.numero" placeholder="Ex.: 7000" ng-model="self.denuncia.localizacao.numero">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                <label for="localizacao.complemento">Complemento</label>
+                <input class="form-control" type="text" name="localizacao.complemento" placeholder="Ex.: B" ng-model="self.denuncia.localizacao.complemento">
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                <label for="localizacao.pontoReferencia">Referência</label>
+                <input class="form-control" type="text" name="localizacao.pontoReferencia" placeholder="UNIP" ng-model="self.denuncia.localizacao.pontoReferencia">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                <label for="localizacao.bairro">Bairro</label>
+                <input class="form-control" type="text" name="localizacao.bairro" placeholder="Ex.: Água Branca" ng-model="self.denuncia.localizacao.bairro">
+            </div>
+
+            <div class="form-group col-md-2 col-sm-2 col-xs-6">
+                <label for="localizacao.estado">UF</label>
+                <input class="form-control" type="text" ng-maxlength="2" name="localizacao.estado" placeholder="Ex.: SP" ng-model="self.denuncia.localizacao.estado">
+            </div>
+            <div class="form-group col-md-4 col-sm-4 col-xs-6">
+                <label for="localizacao.cidade">Cidade</label>
+                <input class="form-control" type="text" name="localizacao.cidade" placeholder="Ex.: São Paulo" ng-model="self.denuncia.localizacao.cidade">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                <label for="localizacao.complemento">Detalhes</label>
+                <textarea class="form-control" rows="3" name="denuncia.detalhes" placeholder="Descreva os detalhes do local, impactos e solução esperada" ng-model="self.denuncia.descricao"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-offset-8 col-md-2 col-sm-12 col-xs-12">
+                <button type="submit" class="btn btn-danger  col-md-12 col-sm-12 col-xs-12" ng-click="self.voltar()">Cancelar</button>
+            </div>
+
+            <div class="form-group col-md-2 col-sm-12 col-xs-12">
+                <button type="submit" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.salvarDenuncia()">Cadastrar</button>
+            </div>
+        </div>
+    </fieldset>
+    <br>
+    <br>
+</section>

@@ -1,0 +1,22 @@
+.logo {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.btn,
+.alert,
+.panel {
+    border-radius: 0 !important;
+}
+
+.hideOverflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+}
+
+.no-padding {
+    padding: 0 !important;
+}

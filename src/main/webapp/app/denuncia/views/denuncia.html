@@ -1,0 +1,95 @@
+<section id="detalhe-denuncia" ng-init="self.obterDetalhesDenuncia()">
+
+    <fieldset class="fieldset">
+        <legend>
+            <strong>Detalhes da denúncia</strong>
+        </legend>
+
+
+        <div class="row">
+            <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                <label for="delator">Nome</label>
+                <input class="form-control" type="text" name="denuncia.delator" ng-model="self.denuncia.delator" disabled>
+            </div>
+
+            <div class="form-group col-md-4 col-sm-4 col-xs-12">
+                <label for="denuncia.tipo">Tipo de denúncia</label>
+                <input class="form-control" type="text" name="denuncia.tipo" ng-model="self.denuncia.tipo.descricao" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-9 col-sm-9 col-xs-8">
+                <label for="localizacao.logradouro">Logradouro</label>
+                <input class="form-control" type="text" name="localizacao.logradouro" ng-model="self.denuncia.localizacao.logradouro" disabled>
+            </div>
+            <div class="form-group col-md-3 col-sm-3 col-xs-4">
+                <label for="localizacao.numero">Número</label>
+                <input class="form-control" type="number" name="localizacao.numero" ng-model="self.denuncia.localizacao.numero" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                <label for="localizacao.complemento">Complemento</label>
+                <input class="form-control" type="text" name="localizacao.complemento" ng-model="self.denuncia.localizacao.complemento" disabled>
+            </div>
+            <div class="form-group col-md-6 col-sm-6 col-xs-6">
+                <label for="localizacao.pontoReferencia">Referência</label>
+                <input class="form-control" type="text" name="localizacao.pontoReferencia" ng-model="self.denuncia.localizacao.pontoReferencia" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                <label for="localizacao.bairro">Bairro</label>
+                <input class="form-control" type="text" name="localizacao.bairro" ng-model="self.denuncia.localizacao.bairro" disabled>
+            </div>
+
+            <div class="form-group col-md-2 col-sm-2 col-xs-6">
+                <label for="localizacao.estado">UF</label>
+                <input class="form-control" type="text" ng-maxlength="2" name="localizacao.estado" ng-model="self.denuncia.localizacao.estado" disabled>
+            </div>
+            <div class="form-group col-md-4 col-sm-4 col-xs-6">
+                <label for="localizacao.cidade">Cidade</label>
+                <input class="form-control" type="text" name="localizacao.cidade" ng-model="self.denuncia.localizacao.cidade" disabled>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                <label for="localizacao.complemento">Detalhes</label>
+                <textarea class="form-control" name="denuncia.detalhes" ng-model="self.denuncia.descricao" disabled></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-offset-10 col-md-2 col-sm-12 col-xs-12">
+                <button type="button" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.voltar()">Voltar</button>
+            </div>
+        </div>
+    </fieldset>
+    <br>
+    <fieldset class="fieldset">
+        <legend>
+            <strong>Tratativas</strong>
+        </legend>
+        <div class="row" ng-if="self.denuncia.tratativas == undefined || self.denuncia.tratativas.length == 0">
+            <p class="text-center">
+                <strong>Não há tratativas para esta denúncia</strong>
+            </p>
+        </div>
+        <div class="list-group col-md-12 col-sm-12 col-xs-12 no-padding">
+            <a href="javascript:void(0)" class="list-group-item" ng-repeat="tratativa in self.denuncia.tratativas | orderBy:'-data'">
+                <h4 class="list-group-item-heading">{{tratativa.responsavel}}</h4>
+                <small>{{tratativa.data |date: 'dd/MM/yyyy HH:mm'}}</small>
+                <p class="list-group-item-text">{{tratativa.descricao}}</p>
+            </a>
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="form-group col-md-offset-10 col-md-2 col-sm-12 col-xs-12">
+            <button type="button" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.voltar()">Voltar</button>
+        </div>
+    </div>
+    <br>
+    <br>
+</section>

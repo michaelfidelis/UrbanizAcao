@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>|UrbanizAção</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron logo">
+            <logo color="lightgreen"></logo>
+        </div>
+    </header>
+
+    <section id="content" class="container">
+        <notifications></notifications>
+        <div ng-view></div>
+    </section>
+
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls-2.2.0.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/app.config.js"></script>
+    <script src="app/commons/notification.service.js"></script>
+    <script src="app/denuncia/denuncia.service.js"></script>
+    <script src="app/tipodenuncia/tipodenuncia.service.js"></script>
+    <script src="app/denuncia/denuncia.controller.js"></script>
+    <script src="app/commons/logo.component.js"></script>
+    <script src="app/commons/notification.component.js"></script>
+</body>
+
+</html>

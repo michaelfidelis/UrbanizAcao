@@ -1,0 +1,36 @@
+<section id="lista-denuncias" ng-init="self.obterDenuncias()">
+    <div class="row">
+
+        <div class="form-group col-md-12">
+            <div class="input-group col-md-12">
+                <span class="input-group-addon" id="filtro-addon">Buscar</span>
+                <input type="text" class="form-control" placeholder="O que deseja buscar?" aria-describedby="filtro-addon" ng-model="self.filtro">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3" ng-repeat="denuncia in self.denuncias |filter:self.filtro">
+            <a href="#!/denuncias/{{denuncia.codigo}}">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <strong class="hideOverflow">{{denuncia.descricao}}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <strong>Tipo: </strong>{{denuncia.tipo.descricao}} <br>
+                                <strong>Localização: </strong>{{denuncia.localizacao.logradouro}}<br>
+                                <strong>Cidade: </strong>{{denuncia.localizacao.cidade}}/{{denuncia.localizacao.estado}}<br>
+                                <strong>Data: </strong>{{denuncia.data|date: 'dd/MM/yyyy HH:mm'}}<br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
