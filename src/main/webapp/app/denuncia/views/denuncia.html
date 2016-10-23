@@ -77,7 +77,7 @@
                 <strong>Não há tratativas para esta denúncia</strong>
             </p>
         </div>
-        <div class="list-group col-md-12 col-sm-12 col-xs-12 no-padding">
+        <div class="list-group col-md-12 col-sm-12 col-xs-12 no-padding" ng-init="self.obterTratativas()">
             <a href="javascript:void(0)" class="list-group-item" ng-repeat="tratativa in self.denuncia.tratativas | orderBy:'-data'">
                 <h4 class="list-group-item-heading">{{tratativa.responsavel}}</h4>
                 <small>{{tratativa.data |date: 'dd/MM/yyyy HH:mm'}}</small>

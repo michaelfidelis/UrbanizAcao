@@ -35,6 +35,10 @@ public class DenunciaResource {
 		super();
 	}
 
+	public DenunciaResource(final Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public long getCodigo() {
 		return this.codigo;
 	}

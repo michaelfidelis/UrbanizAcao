@@ -13,11 +13,9 @@ import br.unip.urbanizacao.dao.TratativaDAO;
 import br.unip.urbanizacao.entidade.DenunciaEntity;
 import br.unip.urbanizacao.entidade.LocalizacaoEntity;
 import br.unip.urbanizacao.entidade.TipoDenunciaEntity;
-import br.unip.urbanizacao.entidade.TratativaEntity;
 import br.unip.urbanizacao.exception.APIException;
 import br.unip.urbanizacao.provider.EMProvider;
 import br.unip.urbanizacao.resource.DenunciaResource;
-import br.unip.urbanizacao.resource.TratativaResource;
 
 public class DenunciaBusiness {
 
@@ -55,14 +53,7 @@ public class DenunciaBusiness {
 				throw new APIException("Não encontrado", 404);
 			}
 
-			final DenunciaResource denunciaResource = new DenunciaResource(denuncia);
-
-			final List<TratativaResource> tratativasResource = new ArrayList<TratativaResource>();
-			for (final TratativaEntity tratativa : this.tratativaDAO.obterPorDenuncia(codigo)) {
-				tratativasResource.add(new TratativaResource(tratativa));
-			}
-			denunciaResource.setTratativas(tratativasResource);
-			return denunciaResource;
+			return new DenunciaResource(denuncia);
 		} catch (final PersistenceException e) {
 			throw new APIException("Erro ao obter denúncia por código.", e);
 		}

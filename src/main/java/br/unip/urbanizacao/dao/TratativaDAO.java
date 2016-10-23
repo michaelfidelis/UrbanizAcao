@@ -4,10 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.unip.urbanizacao.entidade.DenunciaEntity;
 import br.unip.urbanizacao.entidade.TratativaEntity;
 
-public class TratativaDAO extends AbstractDAO<DenunciaEntity, Long> {
+public class TratativaDAO extends AbstractDAO<TratativaEntity, Long> {
 
 	public TratativaDAO(final EntityManager manager) {
 		super(manager);

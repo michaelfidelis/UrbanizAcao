@@ -3,9 +3,9 @@
 
     angular.module('app').controller('DenunciaController', DenunciaController);
 
-    DenunciaController.$inject = ['$location', '$routeParams', 'DenunciaService', 'TipoDenunciaService', 'NotificationService'];
+    DenunciaController.$inject = ['$location', '$routeParams', 'DenunciaService', 'TipoDenunciaService', 'NotificationService', 'TratativaService'];
 
-    function DenunciaController($location, $routeParams, DenunciaService, TipoDenunciaService, NotificationService) {
+    function DenunciaController($location, $routeParams, DenunciaService, TipoDenunciaService, NotificationService, TratativaService) {
         var self = this;
         self.denuncia = {};
         self.denuncias = [];
@@ -34,6 +34,19 @@
             function isError() {
                 self.denuncias = [];
                 NotificationService.adicionar('danger', 'Erro ao obter denúncias cadastradas.');
+            }
+        };
+
+        self.obterTratativas = function () {
+            TratativaService.obterPorDenuncia($routeParams.codigo).then(isSuccess, isError);
+
+            function isSuccess(data) {
+                self.denuncia.tratativas = data.data;
+            }
+
+            function isError() {
+                self.denuncia.tratativas = [];
+                NotificationService.adicionar('danger', 'Erro ao obter tratativas para esta denúncia.');
             }
         };
 
