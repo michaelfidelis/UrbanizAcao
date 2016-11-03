@@ -61,6 +61,10 @@ public class DenunciaService {
 						.build();
 			}
 
+			if (denunciaResource.getDelator() == null || denunciaResource.getDelator().isEmpty()) {
+				denunciaResource.setDelator("Anônimo");
+			}
+
 			final DenunciaBusiness denunciaBusiness = new DenunciaBusiness();
 			final DenunciaResource denunciaGravada = denunciaBusiness.salvarDenuncia(denunciaResource);
 			return Response.ok(denunciaGravada).build();

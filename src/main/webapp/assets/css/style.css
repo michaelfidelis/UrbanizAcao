@@ -33,3 +33,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.descricao-pg-inicial {
+    line-height: 1.5em;
+}

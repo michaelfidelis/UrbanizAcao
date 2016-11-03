@@ -10,6 +10,10 @@
         self.denuncia = {};
         self.denuncias = [];
         self.tiposDenuncia = [];
+        self.tratativa = {
+            denuncia: {}
+        };
+        self.insercaoTratativa = false;
 
         self.obterTiposDenuncia = function () {
             TipoDenunciaService.listar().then(isSuccess, isError);
@@ -48,6 +52,30 @@
                 self.denuncia.tratativas = [];
                 NotificationService.adicionar('danger', 'Erro ao obter tratativas para esta denúncia.');
             }
+        };
+
+        self.inserirTratativa = function () {
+            self.tratativa.denuncia.codigo = $routeParams.codigo;
+            TratativaService.salvar(self.tratativa).then(isSuccess, isError);
+
+            function isSuccess(data) {
+                self.denuncia.tratativas.push(
+                    angular.copy(data.data)
+                );
+                NotificationService.adicionar('success', 'Tratativa cadastrada com sucesso!');
+                self.tratativa = {};
+                self.insercaoTratativa = false;
+            }
+
+            function isError() {
+                self.tratativa = {};
+                NotificationService.adicionar('danger', 'Erro ao inserir tratativa para esta denúncia.');
+            }
+        };
+
+        self.cancelarInsercaoTratativa = function () {
+            self.tratativa = {};
+            self.insercaoTratativa = false;
         };
 
         self.salvarDenuncia = function () {

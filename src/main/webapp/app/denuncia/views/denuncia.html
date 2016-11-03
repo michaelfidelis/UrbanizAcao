@@ -71,25 +71,56 @@
     <fieldset class="fieldset">
         <legend>
             <strong>Tratativas</strong>
+            <span ng-show="!self.insercaoTratativa">
+            (<a href="javascript:void(0)" ng-click="self.insercaoTratativa = !self.insercaoTratativa">inserir tratativa</a>)
+            </span>
         </legend>
-        <div class="row" ng-if="self.denuncia.tratativas == undefined || self.denuncia.tratativas.length == 0">
-            <p class="text-center">
-                <strong>Não há tratativas para esta denúncia</strong>
-            </p>
-        </div>
-        <div class="list-group col-md-12 col-sm-12 col-xs-12 no-padding" ng-init="self.obterTratativas()">
+        <div class="list-group col-md-12 col-sm-12 col-xs-12 no-padding" ng-init="self.obterTratativas()" ng-show="!self.insercaoTratativa">
+            <div class="row" ng-if="self.denuncia.tratativas == undefined || self.denuncia.tratativas.length == 0">
+                <p class="text-center">
+                    <strong>Não há tratativas para esta denúncia</strong>
+                </p>
+            </div>
             <a href="javascript:void(0)" class="list-group-item" ng-repeat="tratativa in self.denuncia.tratativas | orderBy:'-data'">
                 <h4 class="list-group-item-heading">{{tratativa.responsavel}}</h4>
                 <small>{{tratativa.data |date: 'dd/MM/yyyy HH:mm'}}</small>
                 <p class="list-group-item-text">{{tratativa.descricao}}</p>
             </a>
+            <br>
+            <div class="row">
+                <div class="form-group col-md-offset-10 col-md-2 col-sm-12 col-xs-12">
+                    <button type="button" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.voltar()">Voltar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-sm-12 col-xs-12" ng-show="self.insercaoTratativa">
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                    <label for="responsavel">Responsável</label>
+                    <input class="form-control" type="text" name="tratativa.responsavel" placeholder="Ex.: Prefeito" ng-model="self.tratativa.responsavel">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-8 col-sm-8 col-xs-12">
+                    <label for="denuncia.tipo">Descrição</label>
+                    <textarea class="form-control" rows="3" name="tratativa.descricao" placeholder="Descreva o que foi feito..." ng-model="self.tratativa.descricao"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="form-group col-md-offset-7 col-md-2 col-sm-12 col-xs-12 no-padding">
+                        <button type="button" class="btn btn-danger  col-md-12 col-sm-12 col-xs-12" ng-click="self.cancelarInsercaoTratativa()">Cancelar</button>
+                    </div>
+
+                    <div class="form-group col-md-offset-1 col-md-2 col-sm-12 col-xs-12 no-padding">
+                        <button type="submit" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.inserirTratativa()">Inserir</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </fieldset>
-    <div class="row">
-        <div class="form-group col-md-offset-10 col-md-2 col-sm-12 col-xs-12">
-            <button type="button" class="btn btn-primary  col-md-12 col-sm-12 col-xs-12" ng-click="self.voltar()">Voltar</button>
-        </div>
-    </div>
     <br>
     <br>
 </section>
